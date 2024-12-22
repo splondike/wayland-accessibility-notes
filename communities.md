@@ -58,7 +58,7 @@ A popular desktop environment on X11 and Wayland.
 
 A popular community Linux distribution.
 
-Don't think there's much, the search wasn't easy to use though.
+Don't think there's much a11y work going on, the search wasn't easy to use though. The installation medium has [espeak and braille included by default](https://archlinux.org/news/accessible-installation-medium/), allowing for use by vision impaired users. Post installation you can install whatever window manager you want (Wayland or X11).
 
 ### Suse
 
