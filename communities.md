@@ -18,6 +18,7 @@ Seemed like Emmanuele Bassi was the main employed accessibility person here, but
 The dominant UI toolkit on Linux.
 
 - https://gitlab.gnome.org/GNOME/gtk/-/issues/1739#note_458101 - Long discussion between Orca users and GTK devs about maintaining AT-SPI2 compatibility. One position for removing it was that it had been badly maintained for so long it might as well be removed.
+- https://gitlab.gnome.org/GNOME/gtk/-/blob/1fc190596f972f41709e19e52d395afed264eb2f/docs/reference/gtk/building.md#accesskit - AccessKit is now an optional accessibility backend in GTK4 on the `main` branch, the hope is this will facilitate its development. Currently supports Windows and OSX (not Linux).
 
 ### Fedora/Red Hat
 
