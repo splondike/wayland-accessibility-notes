@@ -24,9 +24,11 @@ I've grouped them below underneath the library they use:
 
 - Mutter: GNOME, Gala
 - KWin: KDE, Polonium
-- wlroots: Sway, Hyprland, Hikari, labwc, wayfire, wio, phoc, kiwmi, cage, vivarium, swayfx, river, qtile, newm-atha, japokwm, dwl, cagebreak
+- wlroots: Sway, Hyprland, Hikari, labwc, wayfire, wio, phoc, kiwmi, cage, vivarium, swayfx, river, qtile, newm-atha, japokwm, dwl, cagebreak, treeland
+- Smithay: Cosmic, Niri
 - Weston
 - Enlightenment
 - Liri
 - Velox
+- Jay
 - Mir (apparently no longer used by Ubuntu)
