@@ -17,7 +17,19 @@ logger = logging.getLogger(__name__)
 
 
 class WaylandClient():
+    """
+    Wayland client for communicating with a compositor.
+
+    Wrapper around the python-wayland library to give some convenience
+    methods.
+    """
+
     def __init__(self, protocols_dir: str):
+        """
+        protocols_dir must contain a prococols.json file with the protocols
+        we want to support.
+        """
+
         self.wl = Proxy()
         self.bindings = {}
         self.available_interfaces = {}
@@ -54,6 +66,11 @@ class WaylandClient():
                 self.bindings["wl_registry"].bind(*self.available_interfaces[name])
 
     def sync(self, timeout=2000) -> None:
+        """
+        Will block until any pending compositor events have been flushed using
+        the sync/done request/event pair designed for this purpose.
+        """
+
         synced = False
         def sync_done(callback_data):
             nonlocal synced
@@ -73,15 +90,26 @@ class WaylandClient():
             raise RuntimeError(f"Didn't receive sync event after {timeout}ms")
 
     def binding(self, name) -> Proxy.DynamicObject:
+        """
+        Get an instance of a global object (e.g. wl_seat).
+        """
+
         self.require_protocols([name])
         if name == "xdg_wm_base" and not self.xdg_wm_base_ping_handler:
             xdg_wm_base = self.bindings["xdg_wm_base"]
             def ping_handler(serial):
                 xdg_wm_base.pong(serial)
+            # If we're using xdg_wm_base then we will start receiving ping
+            # events. If we don't respond to them we'll be considered inactive,
+            # so handle those events centrally here.
             xdg_wm_base.events.ping += ping_handler
         return self.bindings[name]
 
     def process_messages(self):
+        """
+        Flush all queued messages from the compositor.
+        """
+
         self.wl.state.process_messages()
 
     def make_shared_memory(self, size) -> Tuple[int, mmap.mmap]:
@@ -114,6 +142,11 @@ class WaylandClient():
 
 
 class WaylandEventWatcher:
+    """
+    Helper for capturing and waiting on Wayland events. Allows code that
+    needs events to be written without callbacks.
+    """
+
     def __init__(self, client: WaylandClient):
         self.client = client
         self.invocations = []
@@ -139,7 +172,8 @@ class WaylandEventWatcher:
 class Window():
     """
     Makes a window in the Wayland compositor that captures events.
-    Acts as a context manager to handle garbage collection on the server end.
+    Acts as a context manager to handle garbage collection of objects
+    created on the compositor.
     """
 
     def __init__(self, client: WaylandClient, fullscreen=False):
