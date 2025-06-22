@@ -24,9 +24,10 @@ def test_pointer():
 @app.command()
 def test_window():
     client = wayland_client.WaylandClient(".")
-    with wayland_client.Window(client):
+    with wayland_client.Window(client) as window:
         import time
         time.sleep(2)
+    print(window.events)
 
 
 @app.command()

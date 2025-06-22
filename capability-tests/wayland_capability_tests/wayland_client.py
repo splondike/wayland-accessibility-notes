@@ -187,13 +187,17 @@ class Window():
         return self
 
     def __exit__(self, *args):
+        self.client.sync()
         self.destroy()
+
+    def sync(self):
+        self.client.sync()
 
     def destroy(self):
         for call in reversed(self.garbage_collection_calls):
             call()
         self.garbage_collection_calls = []
-        self.client.sync()
+        self.sync()
 
     def show(self):
         # If called twice, destroy the old window first
@@ -244,18 +248,54 @@ class Window():
             xdg_toplevel.set_fullscreen(self.client.binding("wl_output"))
 
         # Track any window resise/maximise/fullscreen etc. events
-        xdg_toplevel.events.configure += self._track_xdg_toplevel_configure_events
-        def _unset_track_xdg_toplevel_configure_events():
-            xdg_toplevel.events.configure -= self._track_xdg_toplevel_configure_events
-        self.garbage_collection_calls.append(
-            _unset_track_xdg_toplevel_configure_events
+        self._bind_event_tracker(
+            xdg_toplevel.events.configure,
+            self._track_xdg_toplevel_configure_events
         )
-        # TODO: See wl_shm.get_pointer/get_keyboard for receiving those
+        # And capture mouse events
+        wl_seat = self.client.binding("wl_seat")
+        wl_pointer = wl_seat.get_pointer()
+        self._bind_event_tracker(
+            wl_pointer.events.motion,
+            self._track_wl_pointer_motion_events
+        )
+        self._bind_event_tracker(
+            wl_pointer.events.button,
+            self._track_wl_pointer_button_events
+        )
+        # TODO: See wl_seat.get_keyboard for receiving those
         # events
 
         # Sync to give a chance for any compositor errors to get logged
         # before continuing
-        self.client.sync()
+        self.sync()
+
+    def _bind_event_tracker(self, event_binding_point, handler):
+        event_binding_point += handler
+        def unset_binding_point():
+            nonlocal event_binding_point
+            event_binding_point -= handler
+        self.garbage_collection_calls.append(
+            unset_binding_point
+        )
+
+    def _track_wl_pointer_motion_events(self, time, surface_x, surface_y):
+        self.events.append({
+            "type": "wl_pointer.motion",
+            "x": surface_x,
+            "y": surface_y
+        })
+
+    def _track_wl_pointer_button_events(self, serial, time, button, state):
+        self.events.append({
+            "type": "wl_pointer.button",
+            "button": {
+                272: "left",
+                273: "right",
+                274: "middle",
+            }.get(button, f"unknown:{button}"),
+            "state": state.name
+        })
 
     def _track_xdg_toplevel_configure_events(self, width, height, states):
         properties = {
