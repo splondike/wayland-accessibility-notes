@@ -29,13 +29,13 @@ Later on the Linux world began to start using containerised/sandboxed desktop ap
 
 After systematically going through the public fora of a number of [communities](communities.md), it seems like the Linux a11y space is chronically underresourced. I'd guess that at any time over the last 10 years you would have had < 10 programmers in the entire world spending any significant time on it, and at most 2 people full time (most often 0).
 
-The Linux a11y development activity in recent years seems to be centered around the Orca screenreader and attempting to maintain its functionality in the transition to Wayland based desktops. The most active communities are the Orca users and dev(s) and a few people working under the GNOME/GTK/AT-SPI2 banners. There's also a recent volunteer accessibility discussion group in the Fedora community. The developer of the AccessKit library is putting some work into the Linux infrastructure ecosystem as well.
+The Linux a11y development activity in recent years seems to be centered around the Orca screenreader and attempting to maintain its functionality in the transition to Wayland based desktops. The most active communities are the Orca users and dev(s) and a few people working under the GNOME/GTK/AT-SPI2 banners. The developer of the AccessKit library is putting some work into the Linux infrastructure ecosystem as well (see [here](https://blogs.gnome.org/a11y/2024/06/18/update-on-newton-the-wayland-native-accessibility-project/) and [here](https://blogs.gnome.org/tbernard/2025/04/11/gnome-stf-2024/#newton)).
 
 The most relevant recent discussions I've found (that also indicate key people) are:
 
 - [AT-SPI working group discussion](https://gnome.pages.gitlab.gnome.org/at-spi2-core/devel-docs/meeting-2023-01-13.html) that discusses the state of AT-SPI and recent work for Orca.
-- [Design proposal for a next generation AT-SPI API](https://gitlab.gnome.org/GNOME/at-spi2-core/-/issues/143)
-- [Key capture Wayland protocol for Orca](https://gitlab.freedesktop.org/wayland/wayland-protocols/-/issues/149) and a [continuation on the XDG Desktop Portal repo](https://github.com/flatpak/xdg-desktop-portal/issues/1046)
+- [Design proposal for a next generation AT-SPI API](https://gitlab.gnome.org/GNOME/at-spi2-core/-/issues/143). There is a [prototype of this currently implemented](https://blogs.gnome.org/tbernard/2025/04/11/gnome-stf-2024/#newton).
+- [Key capture Wayland protocol for Orca](https://gitlab.freedesktop.org/wayland/wayland-protocols/-/issues/149) and a [continuation on the XDG Desktop Portal repo](https://github.com/flatpak/xdg-desktop-portal/issues/1046) . GNOME has a [DE specific procotol](https://gitlab.gnome.org/GNOME/at-spi2-core/-/merge_requests/178) implemented (as of 2025-04-01).
 - [Notes from new Fedora accessibility group meeting](https://discussion.fedoraproject.org/t/2023-10-03-accessibility-working-group-meeting-recap/91647/3) seems like it's just getting stood up.
 - [KDE dev on Wayland a11y](https://discuss.kde.org/t/questions-about-ui-automation-on-kwin-wayland/1778/10) - learn the tech and get involved to improve the situation.
 

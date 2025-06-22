@@ -111,10 +111,9 @@ https://wiki.linuxfoundation.org/accessibility/start links to a11y.org, but that
 
 Individuals who seem to be particularly active in the a11y space.
 
-- Tait Hoyem (TTWNO) - Getting paid to work on input grabbing Wayland protocol - https://gitlab.freedesktop.org/wayland/wayland-protocols/-/issues/149
 - AT-SPI2 folks https://gnome.pages.gitlab.gnome.org/at-spi2-core/devel-docs/meeting-2023-01-13.html
 - Emmanuele Bassi - Seemed to be the key accessibility guy at GTK/GNOME previously. Was employed by GNOME foundation (at least in 2020), and now works for https://www.igalia.com/ (he may have been hired by GNOME as a contractor in 2020 though as well)
 - Samuel Thibault - Involved in Wayland, a11y, GTK, GNOME, Debian, and Orca
-- Joanmarie Diggs - Main Orca dev
+- Joanmarie Diggs - Main Orca dev. Employed by Igalia.
 - David Edmundson - Somebody heavily involved in KWin and QT dev in the Wayland world. http://blog.davidedmundson.co.uk/blog/new-ideas-using-wayland-input-methods/
-- Matt Campbell - Main AccessKit dev, is doing some recent (2023-10-30) thinking about a next generation AT-SPI like API.
+- Matt Campbell - Main AccessKit dev, has been working on the next generation AT-SPI like API in GTK and GNOME.
