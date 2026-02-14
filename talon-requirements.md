@@ -1,6 +1,6 @@
 # Talon requirements
 
-This page lists the OS features required by the [Talon platform](https://talonvoice.com/). Talon is an Accessibility Technology that allows the user to control their computer via voice, noises, facial expressions, keyboard, or an eye tracker. It provides a cross platform API for window management for user defined scripts, and allows behaviour to vary depending on the focussed application window.
+This page lists the OS features required by the [Talon platform](https://talonvoice.com/). Talon is an Accessibility Technology that allows the user to control their computer via voice, noises, facial expressions, keyboard, or an eye tracker. It provides a cross platform API for window management for user defined scripts, and allows behaviour to vary depending on the focussed application window. Note that there's a [companion project](https://github.com/splondike/wayland-capability-tests) to this document that aims to actually implement tests for these features so we can know for sure what's possible.
 
 ## Feature index
 
