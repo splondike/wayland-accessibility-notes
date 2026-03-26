@@ -24,8 +24,9 @@ I've grouped them below underneath the library they use:
 
 - Mutter: GNOME, Gala
 - KWin: KDE, Polonium
-- wlroots: Sway, Hyprland, Hikari, labwc, wayfire, wio, phoc, kiwmi, cage, vivarium, swayfx, river, qtile, newm-atha, japokwm, dwl, cagebreak, treeland
-- Smithay: Cosmic, Niri
+- wlroots (library): Sway, Hyprland, Hikari, labwc, wayfire, wio, phoc, kiwmi, cage, vivarium, swayfx, river, qtile, newm-atha, japokwm, dwl, cagebreak, treeland
+- Smithay (library): Cosmic, Niri
+- River (library): beansprout, Canoe, kwm, machi, mousetrap
 - Weston
 - Enlightenment
 - Liri
